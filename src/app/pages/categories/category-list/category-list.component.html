@@ -12,7 +12,7 @@
       </h1>
     </div>
     <div class="col-md">
-      <a routerLink="new" class="btn btn-success float-right">
+      <a routerLink="new" class="btn btn-success float-end">
         + Nova Categoria
       </a>
     </div>
@@ -23,7 +23,7 @@
     <thead>
       <tr class="bg-primary text-light">
         <th>Categoria</th>
-        <th>Ações</th>
+        <th class="text-center">Ações</th>
       </tr>
     </thead>
     <tbody>
@@ -33,8 +33,8 @@
           <small>{{category.description}}</small>
         </td>
         <td>
-          <a [routerLink]="[category.id, 'edit']" class="btn btn-outline-info btn-sm mr-2">Editar</a>
-          <button (click)="deleteCategory(category)" class="btn btn-outline-danger btn-sm">Excluir</button>
+          <a [routerLink]="[category.id, 'edit']" class="btn btn-outline-info btn-sm float-center ==">Editar</a>
+          <button (click)="deleteCategory(category)" class="btn btn-outline-danger btn-sm float-center">Excluir</button>
         </td>
       </tr>
     </tbody>
