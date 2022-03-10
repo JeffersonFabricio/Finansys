@@ -18,7 +18,7 @@ export class CategoryListComponent implements OnInit {
     this.categoryService.getAll().subscribe({
       next: categories => this.categories = categories,
       error: error => alert('Erro ao carregar a lista')
-    })
+    });
   }
 
   deleteCategory(category: any) {
@@ -28,7 +28,7 @@ export class CategoryListComponent implements OnInit {
       this.categoryService.delete(category.id).subscribe({
         next: () => this.categories = this.categories.filter(element => element != category),
         error: () => alert("Erro ao tentar excluir!")
-      })
+      });
     }
   }
 

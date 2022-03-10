@@ -20,7 +20,7 @@ export class CategoryService {
     return this.http.get(this.apiPath).pipe(
       catchError(this.handleError),
       map(this.jsonDataToCategories)
-    )
+    );
   }
 
   getById(id: number): Observable<Category> {
@@ -29,14 +29,14 @@ export class CategoryService {
     return this.http.get(url).pipe(
       catchError(this.handleError),
       map(this.jsonDataToCategory)
-    )
+    );
   }
 
   create(category: Category): Observable<Category> {
     return this.http.post(this.apiPath, category).pipe(
       catchError(this.handleError),
       map(this.jsonDataToCategory)
-    )
+    );
   }
 
   update(category: Category): Observable<Category> {
@@ -45,7 +45,7 @@ export class CategoryService {
     return this.http.put(url, category).pipe(
       catchError(this.handleError),
       map(() => category)
-    )
+    );
   }
 
   delete(id: number): Observable<any> {
@@ -54,7 +54,7 @@ export class CategoryService {
     return this.http.delete(url).pipe(
       catchError(this.handleError),
       map(() => null)
-    )
+    );
   }
 
   // PRIVATE METHODS
