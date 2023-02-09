@@ -1,6 +1,21 @@
+# Tecnologias:
+	- Angular 15
+	- Bootstrap 5
+	- JQuery
+
+# Plugins:
+	- Angular IMask Plugin
+	- Currency Formatter
+	- Moment
+	- Toastr
+	- PrimeNG
+	- in memory web api
+  
+ Baixe o repositório, acesso o diretório e execute o comando "npm install" ou "npm i" em seguida execute o comando "ng s --o"
+
 # Finansys
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.5.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.
 
 ## Development server
 
