@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterContentChecked } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, FormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { switchMap } from 'rxjs';
@@ -17,7 +17,7 @@ import * as toastr from "toastr";
 export class CategoryFormComponent implements OnInit, AfterContentChecked {
 
   currentAction: string = "";
-  categoryForm: FormGroup = new FormGroup({});
+  categoryForm: UntypedFormGroup = new UntypedFormGroup({});
   pageTitle: string = "";
   serverErrorMessages: string[] = [];
   submittingForm: boolean = false;
@@ -27,7 +27,7 @@ export class CategoryFormComponent implements OnInit, AfterContentChecked {
     private categoryService: CategoryService,
     private route: ActivatedRoute,
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: UntypedFormBuilder
   ) { }
 
   ngOnInit(): void {
