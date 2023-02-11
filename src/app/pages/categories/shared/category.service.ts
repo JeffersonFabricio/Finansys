@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 
 import { Observable, throwError } from "rxjs";
-import { map, catchError, mergeMap } from "rxjs/operators";
+import { map, catchError } from "rxjs/operators";
 
 import { Category } from "./category.model";
 
@@ -71,6 +71,6 @@ export class CategoryService {
 
   private handleError(error: any): Observable<any>{
     console.log("ERRO NA REQUISIÇÃO => ", error);
-    return throwError(error);
+    return throwError(() => new Error('ERRO NA REQUISIÇÃO' + error));
   }
 }
