@@ -23,7 +23,7 @@
     <thead>
       <tr class="bg-primary text-light">
         <th>Categoria</th>
-        <th class="text-center">Ações</th>
+        <th class="text-left">Ações</th>
       </tr>
     </thead>
     <tbody>
@@ -33,7 +33,7 @@
           <small>{{category.description}}</small>
         </td>
         <td>
-          <a [routerLink]="[category.id, 'edit']" class="btn btn-outline-info btn-sm float-center ==">Editar</a>
+          <a [routerLink]="[category.id, 'edit']" class="btn btn-outline-info btn-sm float-center">Editar</a>
           <button (click)="deleteCategory(category)" class="btn btn-outline-danger btn-sm float-center">Excluir</button>
         </td>
       </tr>

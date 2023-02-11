@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterContentChecked } from '@angular/core';
-import { UntypedFormBuilder, FormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { switchMap } from 'rxjs';
@@ -31,6 +31,7 @@ export class CategoryFormComponent implements OnInit, AfterContentChecked {
   ) { }
 
   ngOnInit(): void {
+    debugger
     this.setCurrentAction();
     this.buildCategoryForm();
     this.loadCategory();
@@ -43,19 +44,23 @@ export class CategoryFormComponent implements OnInit, AfterContentChecked {
   submitForm(){
     this.submittingForm = true;
 
-    if (this.currentAction === "new")
-      this.createCategory()
+    if (this.getCurrentActionEqualsNew()) 
+      this.createCategory();
     else 
-      this.updateCategory()
+      this.updateCategory();
   }
 
   // private methods
   
   private setCurrentAction(){
-    if (this.route.snapshot.url[0].path == "new")
-      this.currentAction = "new";
-    else
-      this.currentAction = "edit";
+    this.currentAction = (this.route.snapshot.url[0].path == "new") ? "new" : "edit";
+  }
+
+  private getCurrentActionEqualsNew() {
+    if (this.currentAction === "new")
+      return true;
+    else 
+      return false;
   }
 
   private buildCategoryForm(){
@@ -67,7 +72,7 @@ export class CategoryFormComponent implements OnInit, AfterContentChecked {
   }
 
   private loadCategory(){
-    if (this.currentAction === "edit") {
+    if (!this.getCurrentActionEqualsNew()) {
 
       let id = this.route.snapshot.params["id"];
 
@@ -84,7 +89,7 @@ export class CategoryFormComponent implements OnInit, AfterContentChecked {
   }
 
   private setPageTitle(){
-    if(this.currentAction === "new")
+    if(this.getCurrentActionEqualsNew())
       this.pageTitle = "Cadastro de Nova Categoria"
     else {
       const categoryName = this.category.name || ""; // evita de aparecer o null no momento que a tela carrega
