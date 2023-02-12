@@ -1,3 +1,23 @@
+<nav class="mb-5">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+    <li class="breadcrumb-item"><a routerLink="/entries">Lançamentos</a></li>
+    <li class="breadcrumb-item active">Lançamentos</li>
+  </ol>
+</nav>
+
+<div class="row mb-4">
+  <div class="col-md">
+    <h1 class="h2 border-left pl-2">
+      Lançamentos
+    </h1>
+  </div>
+  <div class="col-md">
+    <a routerLink="/categories" class="btn btn-secondary float-end">
+      << Voltar
+    </a>
+  </div>
+</div>
 
 <form>
   <div class="card">
@@ -6,28 +26,25 @@
     </div>
 
     <div class="card-body">
-
-      <div class="form-row">
+      <div class="row">
         <!-- type -->
-        <div class="form-group col-md-2">
+        <div class="group col-md-2">
           <label for="type">Tipo de Lançamento</label>
 
           <select name="type" id="type" formControlName="type" class="form-control">
             <option selected disabled [value]="null">Selecione o tipo</option>
             <option >option.text</option>
           </select>
-
         </div>
 
         <!-- name -->
-        <div class="form-group col-md-5">
+        <div class="group col-md-5">
           <label for="name">Lançamento</label>
           <input type="text" class="form-control" id="name" formControlName="name">
-
         </div>
 
         <!-- amount -->
-        <div class="form-group col-md-3">
+        <div class="group col-md-3">
           <label for="amount">Valor</label>
           <div class="input-group">
             <div class="input-group-prepend">
@@ -36,41 +53,36 @@
             <input type="text" class="form-control text-right" id="amount"
               formControlName="amount">
           </div>
-
         </div>
 
         <!-- date -->
-        <div class="form-group col-md-2">
+        <div class="group col-md-2">
           <label for="date">Data</label>
         </div>
 
       </div>
 
-      <div class="form-row">
-
+      <div class="row">
         <!-- paid -->
-        <div class="form-group col-md-2">
+        <div class="group col-md-2">
           <label for="paid">Pago</label>
           <div class="btn-group">
             <label class="btn btn-outline-info">Pago</label>
             <label class="btn btn-outline-info">Pendente</label>
           </div>
-
         </div>
 
         <!-- categoryId -->
-        <div class="form-group col-md-3">
+        <div class="group col-md-3">
           <label for="categoryId">Categoria</label>
-
           <select name="categoryId" id="categoryId" formControlName="categoryId" class="form-control">
             <option selected disabled [value]="null">Selecione a categoria</option>
             <option></option>
           </select>
-
         </div>
 
         <!-- description -->
-        <div class="form-group col-md-7">
+        <div class="group col-md-7">
           <label for="description">Descrição</label>
           <input type="text" class="form-control" id="description" formControlName="description">
         </div>
