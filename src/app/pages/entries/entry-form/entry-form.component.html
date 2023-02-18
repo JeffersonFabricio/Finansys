@@ -9,20 +9,21 @@
 <div class="row mb-4">
   <div class="col-md">
     <h1 class="h2 border-left pl-2">
-      Lançamentos
+      {{pageTitle}}
     </h1>
   </div>
   <div class="col-md">
-    <a routerLink="/categories" class="btn btn-secondary float-end">
+    <a routerLink="/entries" class="btn btn-secondary float-end">
       << Voltar
     </a>
   </div>
 </div>
 
-<form>
+<form [formGroup]="entryForm" (submit)="submitForm()">
+
   <div class="card">
     <div class="card-header">
-      Informações sobre o lançamento
+      Informações sobre o Lançamento
     </div>
 
     <div class="card-body">
@@ -33,7 +34,7 @@
 
           <select name="type" id="type" formControlName="type" class="form-control">
             <option selected disabled [value]="null">Selecione o tipo</option>
-            <option >option.text</option>
+            <option *ngFor="let option of typeOptions" [value]="option.value">{{option.text}}</option>
           </select>
         </div>
 
@@ -41,6 +42,7 @@
         <div class="group col-md-5">
           <label for="name">Lançamento</label>
           <input type="text" class="form-control" id="name" formControlName="name">
+         
         </div>
 
         <!-- amount -->
@@ -77,6 +79,7 @@
           <label for="categoryId">Categoria</label>
           <select name="categoryId" id="categoryId" formControlName="categoryId" class="form-control">
             <option selected disabled [value]="null">Selecione a categoria</option>
+            <option *ngFor="let option of categories" [value]="option.id">{{option.name}}</option>
             <option></option>
           </select>
         </div>
@@ -90,7 +93,15 @@
     </div>
   </div>
 
-  <button type="submit"
-    class="btn btn-primary btn-lg float-right mt-3"> Salvar</button>
+  <div class="mt-4 alert alert-danger" *ngIf='serverErrorMessages.length'>
+    <strong>Erro no servidor: </strong>
+    <ul>
+      <li *ngFor='let error of serverErrorMessages'>{{error}}</li>
+    </ul>
+  </div>
+
+  <button [disabled]="submittingForm || entryForm.invalid" type="submit"
+    class="btn btn-primary btn-lg float-right mt-3" > Salvar
+  </button>
 
 </form>
