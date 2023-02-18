@@ -26,7 +26,7 @@ export class InMemoryDatabase implements InMemoryDbService {
             { id: 12, name: 'Aluguel', categoryId: categories[2].id, category: categories[2], paid: false, date: "23/10/2023", amount: "15,00", type: "expense" } as Entry,
             { id: 13, name: 'Gás de Cozinha', categoryId: categories[1].id, category: categories[1], paid: false, date: "25/10/2023", amount: "130,00", type: "expense" } as Entry,
             { id: 14, name: 'Pagamento Pelo Projeto XYZ', categoryId: categories[4].id, category: categories[4], paid: true, date: "25/10/2023", amount: "2980,00", type: "revenue" } as Entry,
-            { id: 15, name: 'Carnaval', categoryId: categories[3].id, category: categories[3], paid: true, date: "25/10/2023", amount: "1000,00", type: "revenue" } as Entry,
+            { id: 15, name: 'Carnaval', categoryId: categories[2].id, category: categories[2], paid: true, date: "25/10/2023", amount: "1000,00", type: "expense" } as Entry,
             { id: 19, name: 'Aluguel de Filme', categoryId: categories[2].id, category: categories[2], paid: false, date: "07/11/2023", amount: "15,00", type: "expense" } as Entry,
             { id: 21, name: 'CS Go', categoryId: categories[1].id, category: categories[1], paid: true, date: "17/11/2023", amount: "30,00", type: "expense" } as Entry,
             { id: 22, name: 'Cinema', categoryId: categories[2].id, category: categories[2], paid: true, date: "18/11/2023", amount: "15,00", type: "expense" } as Entry,
