@@ -1,4 +1,5 @@
 <table class="table table-hover">
+  <caption>Table of entries</caption>
   <thead>
     <tr class="bg-primary text-light">
       <th>Lançamento</th>
@@ -8,42 +9,27 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
+    <tr *ngFor="let entry of entries">
       <td>
-        <strong>Compra</strong><br>
-        <small >Compra poco M4 Pro</small>
+        <strong>{{entry.name}}</strong><br>
+        <small class="text-success">{{entry.date}}</small><br>
+        <small *ngIf="entry.description">{{entry.description}}</small>
       </td>
       <td>
-        Celular
+        {{entry.category?.name}}
       </td>
       <td class="text-right">
-        <strong>
-          3.999,00
+        <strong [class.text-success]="entry.type == 'revenue'" [class.text-danger]="entry.type == 'expense'">
+          {{entry.amount}}
         </strong>
         <br>
+        <span class="badge badge-light">
+          {{entry.paidText}}
+        </span>
       </td>
       <td class="text-center">
-        <a [routerLink]="[1, 'edit']" class="btn btn-outline-info btn-sm mr-2">Editar</a>
-        <button class="btn btn-outline-danger btn-sm">Excluir</button>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <strong>Compra</strong><br>
-        <small >Compra poco M4 Pro</small>
-      </td>
-      <td>
-        Celular
-      </td>
-      <td class="text-right">
-        <strong>
-          3.999,00
-        </strong>
-        <br>
-      </td>
-      <td class="text-center">
-        <a [routerLink]="[2, 'edit']" class="btn btn-outline-info btn-sm mr-2">Editar</a>
-        <button class="btn btn-outline-danger btn-sm">Excluir</button>
+        <a [routerLink]="[entry.id, 'edit']" class="btn btn-outline-info btn-sm mr-2"><i class="far fa-edit"></i> Editar</a>
+        <button (click)="deleteEntry(entry)" class="btn btn-outline-danger btn-sm"><i class="far fa-trash-alt"></i> Excluir</button>
       </td>
     </tr>
   </tbody>
