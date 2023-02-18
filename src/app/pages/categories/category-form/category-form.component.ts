@@ -31,7 +31,6 @@ export class CategoryFormComponent implements OnInit, AfterContentChecked {
   ) { }
 
   ngOnInit(): void {
-    debugger
     this.setCurrentAction();
     this.buildCategoryForm();
     this.loadCategory();
