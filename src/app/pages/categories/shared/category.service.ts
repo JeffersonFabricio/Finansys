@@ -11,7 +11,7 @@ import { Category } from "./category.model";
 })
 export class CategoryService {
 
-  private apiPath: string = "api/teste";
+  private apiPath: string = "api/categories";
 
   constructor(private http: HttpClient) { }
 
