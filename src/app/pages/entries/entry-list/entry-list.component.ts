@@ -15,6 +15,10 @@ export class EntryListComponent {
   constructor(private entryService: EntryService) { }
 
   ngOnInit() {
+    this.loadEntries();
+  }
+
+  loadEntries(){
     this.entryService.getAll().subscribe({
       next: entries => this.entries = entries,
       error: error => alert('Erro ao carregar a lista')

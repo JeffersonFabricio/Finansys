@@ -14,7 +14,7 @@
   </div>
   <div class="col-md">
     <a routerLink="/entries" class="btn btn-secondary float-end">
-      << Voltar
+      <i class="pi pi-angle-double-left"></i> Voltar
     </a>
   </div>
 </div>
@@ -33,44 +33,67 @@
           <label for="type">Tipo de Lançamento</label>
 
           <select name="type" id="type" formControlName="type" class="form-control">
-            <option selected disabled [value]="null">Selecione o tipo</option>
-            <option *ngFor="let option of typeOptions" [value]="option.value">{{option.text}}</option>
+            <option *ngFor="let option of typeOptions" [value]="option.value">{{ option.text }}</option>
           </select>
+
+          <div class="text-danger" *ngIf="entryForm.get('type')?.invalid">
+            <div *ngIf="entryForm.get('type')?.errors?.['required']">O Tipo é obrigatório</div>
+          </div>
+
         </div>
 
         <!-- name -->
         <div class="group col-md-5">
           <label for="name">Lançamento</label>
           <input type="text" class="form-control" id="name" formControlName="name">
+
+          <div class="text-danger" *ngIf="entryForm.get('name')?.invalid && entryForm.get('name')?.touched">
+            <div *ngIf="entryForm.get('name')?.errors?.['required']">O lançamento é obrigatório</div>
+            <div *ngIf="entryForm.get('name')?.errors?.['minlength']">Deve ter no mínimo 2 caracteres</div>
+          </div>
          
         </div>
 
         <!-- amount -->
-        <div class="group col-md-3">
+        <div class="group col-md-2">
           <label for="amount">Valor</label>
           <div class="input-group">
             <div class="input-group-prepend">
               <div class="input-group-text">R$</div>
             </div>
-            <input type="text" class="form-control text-right" id="amount"
-              formControlName="amount">
+            <input [imask]="imaskConfig" type="text" class="form-control text-end" id="amount" formControlName="amount">
           </div>
+
+          <div class="text-danger" *ngIf="entryForm.get('amount')?.invalid && entryForm.get('amount')?.touched">
+            <div *ngIf="entryForm.get('amount')?.errors?.['required']">O valor é obrigatório</div>
+          </div>
+
         </div>
 
         <!-- date -->
-        <div class="group col-md-2">
-          <label for="date">Data</label>
+        <div class="group col-md-3">
+          <label for="date">Data</label><br/>
+
+          <p-calendar id="date" formControlName="date" inputStyleClass="form-control" 
+            dataType="string"
+            dateFormat="dd/mm/yy" 
+            [showButtonBar]="true">
+          </p-calendar>
+          
+          <div *ngIf="entryForm.get('date')?.errors?.['required']">A data é obrigatória</div>
         </div>
 
       </div>
 
       <div class="row">
         <!-- paid -->
-        <div class="group col-md-2">
-          <label for="paid">Pago</label>
+        <div class="group col-md-2" >
+          <label for="paid">Pago</label><br/>
           <div class="btn-group">
-            <label class="btn btn-outline-info">Pago</label>
-            <label class="btn btn-outline-info">Pendente</label>
+            <label (click)="entryForm.get('paid')?.setValue(true)" [class.active]="entryForm.get('paid')?.value == true"
+              class="btn btn-outline-info">Pago</label>
+            <label (click)="entryForm.get('paid')?.setValue(false)" [class.active]="entryForm.get('paid')?.value == false"
+              class="btn btn-outline-info">Pendente</label>
           </div>
         </div>
 
@@ -80,7 +103,6 @@
           <select name="categoryId" id="categoryId" formControlName="categoryId" class="form-control">
             <option selected disabled [value]="null">Selecione a categoria</option>
             <option *ngFor="let option of categories" [value]="option.id">{{option.name}}</option>
-            <option></option>
           </select>
         </div>
 
@@ -101,7 +123,7 @@
   </div>
 
   <button [disabled]="submittingForm || entryForm.invalid" type="submit"
-    class="btn btn-primary btn-lg float-right mt-3" > Salvar
+    class="btn btn-primary btn-lg float-right mt-3"> <i class="pi pi-save"></i> Salvar
   </button>
 
 </form>

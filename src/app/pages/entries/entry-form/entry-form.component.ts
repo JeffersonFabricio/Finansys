@@ -29,6 +29,15 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
 
   entryForm: UntypedFormGroup = new UntypedFormGroup({});
 
+  imaskConfig = {
+    mask: Number,
+    scale: 2,
+    thousandsSeparator: '',
+    padFractionalZeros: true,
+    normalizeZero: true,
+    radix: ','
+  };
+
   constructor(
     protected entryService: EntryService,
     protected categoryService: CategoryService,
@@ -68,17 +77,6 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
       paid: [true, [Validators.required]],
       categoryId: [null, [Validators.required]]
     });
-  }
-
-  get typeOptions(): Array<any> {
-    return Object.entries(Entry.types).map(
-      ([value, text]) => {
-        return {
-          text: text,
-          value: value
-        }
-      }
-    )
   }
 
   // private methods
@@ -164,6 +162,17 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
       return true;
     else 
       return false;
+  }
+
+  get typeOptions(): Array<any> {
+    return Object.entries(Entry.types).map(
+      ([value, text]) => {
+        return {
+          text: text,
+          value: value
+        }
+      }
+    )
   }
   
 }
