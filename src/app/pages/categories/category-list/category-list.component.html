@@ -13,7 +13,7 @@
   </div>
   <div class="col-md">
     <a routerLink="new" class="btn btn-success float-end">
-      + Nova Categoria
+      <i class="pi pi-plus-circle"></i> Nova Categoria
     </a>
   </div>
 </div>
@@ -33,8 +33,8 @@
         <small>{{category.description}}</small>
       </td>
       <td>
-        <a [routerLink]="[category.id, 'edit']" class="btn btn-outline-info btn-sm float-center">Editar</a>
-        <button (click)="deleteCategory(category)" class="btn btn-outline-danger btn-sm float-center">Excluir</button>
+        <a [routerLink]="[category.id, 'edit']" class="btn btn-outline-info btn-sm float-center"><i class="pi pi-pencil"></i> Editar</a>
+        <button (click)="deleteCategory(category)" class="btn btn-outline-danger btn-sm float-center"><i class="pi pi-times-circle"></i> Excluir</button>
       </td>
     </tr>
   </tbody>
